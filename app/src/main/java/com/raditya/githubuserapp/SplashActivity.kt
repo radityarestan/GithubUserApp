@@ -1,4 +1,4 @@
-package com.raditya.githubuserapp.view
+package com.raditya.githubuserapp
 
 import android.content.Intent
 import android.os.Build
@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.raditya.githubuserapp.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
