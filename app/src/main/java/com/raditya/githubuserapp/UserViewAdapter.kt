@@ -9,7 +9,13 @@ import com.bumptech.glide.request.RequestOptions
 import com.raditya.githubuserapp.databinding.ItemRowUserBinding
 import de.hdodenhof.circleimageview.CircleImageView
 
-class UserViewAdapter(private val listOfUser: ArrayList<User>): RecyclerView.Adapter<UserViewAdapter.UserViewHolder>() {
+class UserViewAdapter(private val onItemCallback: OnItemCallback, private val listOfUser: ArrayList<User>):
+    RecyclerView.Adapter<UserViewAdapter.UserViewHolder>() {
+
+    interface OnItemCallback {
+        fun onItemCalled(user: User)
+    }
+
     inner class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val binding = ItemRowUserBinding.bind(itemView)
 
@@ -38,6 +44,10 @@ class UserViewAdapter(private val listOfUser: ArrayList<User>): RecyclerView.Ada
             .into(holder.getAvatar())
 
         holder.bindText(user.name, user.location)
+
+        holder.itemView.setOnClickListener{
+            onItemCallback.onItemCalled(user)
+        }
     }
 
     override fun getItemCount(): Int {
